@@ -24,6 +24,7 @@ import {
   Legend,
 } from "recharts";
 import { motion } from "framer-motion";
+import BikesSalesDashboard from "./components/BikesSalesDashboard";
 
 // Sample data for the chart
 const sampleData = [
@@ -156,6 +157,130 @@ const App = () => {
 
   // ... Rest of the components (Page2, Page3) remain the same as in the TypeScript version
   // Just remove the TypeScript type annotations
+  const Page2 = () => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <Card className="m-6 bg-gradient-to-br from-white to-purple-50 shadow-xl">
+        <CardHeader>
+          <motion.div
+            initial={{ x: -20 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <CardTitle className="text-3xl text-purple-900">
+              Model Information
+            </CardTitle>
+            <CardDescription className="text-lg">
+              Output Variables and Model Details
+            </CardDescription>
+          </motion.div>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3 className="text-xl font-semibold text-purple-800 mb-3">
+                Output Variables
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                The main output variable is [variable name], which represents
+                [description].
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3 className="text-xl font-semibold text-purple-800 mb-3">
+                Model Architecture
+              </h3>
+              {["Model Type", "Key Features", "Performance Metrics"].map(
+                (item, index) => (
+                  <motion.div
+                    key={index}
+                    className="mb-4 p-4 bg-purple-50 rounded-lg"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.2 }}
+                  >
+                    <h4 className="font-semibold text-purple-700">{item}</h4>
+                    <p className="text-gray-600">[Description]</p>
+                  </motion.div>
+                )
+              )}
+            </motion.div>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+
+  const Page3 = () => (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="m-6"
+    >
+      <Card className="bg-gradient-to-br from-white to-blue-50 shadow-xl">
+        <CardHeader>
+          <motion.div
+            initial={{ x: -20 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <CardTitle className="text-3xl text-blue-900">
+              Interactive Dashboard
+            </CardTitle>
+            <CardDescription className="text-lg">
+              Select parameters to update the visualization
+            </CardDescription>
+          </motion.div>
+        </CardHeader>
+        <CardContent>
+          <motion.div
+            className="mb-6"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Select value={selectedParam} onValueChange={setSelectedParam}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select parameter" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="option1">Option 1</SelectItem>
+                <SelectItem value="option2">Option 2</SelectItem>
+                <SelectItem value="option3">Option 3</SelectItem>
+              </SelectContent>
+            </Select>
+          </motion.div>
+
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-lg overflow-x-auto"
+            whileHover={{ scale: 1.01 }}
+            transition={{ duration: 0.2 }}
+          >
+            <BarChart width={600} height={300} data={sampleData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="value" fill="#4f46e5" />
+            </BarChart>
+          </motion.div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-100">
@@ -169,7 +294,7 @@ const App = () => {
       >
         {currentPage === 1 && <Page1 />}
         {currentPage === 2 && <Page2 />}
-        {currentPage === 3 && <Page3 />}
+        {currentPage === 3 && <BikesSalesDashboard />}
       </motion.div>
     </div>
   );
