@@ -24,9 +24,7 @@ import {
   Legend,
 } from "recharts";
 import { motion } from "framer-motion";
-import BikesSalesDashboard from "./components/BikesSalesDashboard";
-import DashMark2 from "./components/DashMark2";
-import DashMark3 from "./components/DashMark3";
+import BikeSalesDashboard from "./components/BikesSalesDashboard";
 
 // Sample data for the chart
 const sampleData = [
@@ -296,7 +294,7 @@ const App = () => {
       >
         {currentPage === 1 && <Page1 />}
         {currentPage === 2 && <Page2 />}
-        {currentPage === 3 && <DashMark3 />}
+        {currentPage === 3 && <BikeSalesDashboard />}
       </motion.div>
     </div>
   );
