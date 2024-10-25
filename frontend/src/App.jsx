@@ -25,6 +25,7 @@ import {
 } from "recharts";
 import { motion } from "framer-motion";
 import BikeSalesDashboard from "./components/BikesSalesDashboard";
+import { ArrowUpRight } from "lucide-react";
 
 // Sample data for the chart
 const sampleData = [
@@ -157,71 +158,171 @@ const App = () => {
 
   // ... Rest of the components (Page2, Page3) remain the same as in the TypeScript version
   // Just remove the TypeScript type annotations
-  const Page2 = () => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <Card className="m-6 bg-gradient-to-br from-white to-purple-50 shadow-xl">
-        <CardHeader>
-          <motion.div
-            initial={{ x: -20 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <CardTitle className="text-3xl text-purple-900">
-              Model Information
-            </CardTitle>
-            <CardDescription className="text-lg">
-              Output Variables and Model Details
-            </CardDescription>
-          </motion.div>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-6">
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-md"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <h3 className="text-xl font-semibold text-purple-800 mb-3">
-                Output Variables
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                The main output variable is [variable name], which represents
-                [description].
-              </p>
-            </motion.div>
+  // const Page2 = () => (
+  //   <motion.div
+  //     initial={{ opacity: 0, y: 20 }}
+  //     animate={{ opacity: 1, y: 0 }}
+  //     transition={{ duration: 0.5 }}
+  //   >
+  //     <Card className="m-6 bg-gradient-to-br from-white to-purple-50 shadow-xl">
+  //       <CardHeader>
+  //         <motion.div
+  //           initial={{ x: -20 }}
+  //           animate={{ x: 0 }}
+  //           transition={{ duration: 0.5 }}
+  //         >
+  //           <CardTitle className="text-3xl text-purple-900">
+  //             Model Information
+  //           </CardTitle>
+  //           <CardDescription className="text-lg">
+  //             Output Variables and Model Details
+  //           </CardDescription>
+  //         </motion.div>
+  //       </CardHeader>
+  //       <CardContent>
+  //         <div className="space-y-6">
+  //           <motion.div
+  //             className="bg-white p-6 rounded-lg shadow-md"
+  //             whileHover={{ scale: 1.02 }}
+  //             transition={{ duration: 0.2 }}
+  //           >
+  //             <h3 className="text-xl font-semibold text-purple-800 mb-3">
+  //               Output Variables
+  //             </h3>
+  //             <p className="text-gray-700 leading-relaxed">
+  //               The main output variable is [variable name], which represents
+  //               [description].
+  //             </p>
+  //           </motion.div>
 
+  //           <motion.div
+  //             className="bg-white p-6 rounded-lg shadow-md"
+  //             whileHover={{ scale: 1.02 }}
+  //             transition={{ duration: 0.2 }}
+  //           >
+  //             <h3 className="text-xl font-semibold text-purple-800 mb-3">
+  //               Model Architecture
+  //             </h3>
+  //             {["Model Type", "Key Features", "Performance Metrics"].map(
+  //               (item, index) => (
+  //                 <motion.div
+  //                   key={index}
+  //                   className="mb-4 p-4 bg-purple-50 rounded-lg"
+  //                   initial={{ opacity: 0, x: -20 }}
+  //                   animate={{ opacity: 1, x: 0 }}
+  //                   transition={{ delay: index * 0.2 }}
+  //                 >
+  //                   <h4 className="font-semibold text-purple-700">{item}</h4>
+  //                   <p className="text-gray-600">[Description]</p>
+  //                 </motion.div>
+  //               )
+  //             )}
+  //           </motion.div>
+  //         </div>
+  //       </CardContent>
+  //     </Card>
+  //   </motion.div>
+  // );
+
+  const Page2 = () => {
+    const handleRedirect = (url) => {
+      window.open(url, "_blank");
+    };
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Card className="m-6 bg-gradient-to-br from-white to-purple-50 shadow-xl">
+          <CardHeader>
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
+              initial={{ x: -20 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <h3 className="text-xl font-semibold text-purple-800 mb-3">
-                Model Architecture
-              </h3>
-              {["Model Type", "Key Features", "Performance Metrics"].map(
-                (item, index) => (
-                  <motion.div
-                    key={index}
-                    className="mb-4 p-4 bg-purple-50 rounded-lg"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.2 }}
-                  >
-                    <h4 className="font-semibold text-purple-700">{item}</h4>
-                    <p className="text-gray-600">[Description]</p>
-                  </motion.div>
-                )
-              )}
+              <CardTitle className="text-3xl text-purple-900">
+                Model Information
+              </CardTitle>
+              <CardDescription className="text-lg">
+                Output Variables and Model Details
+              </CardDescription>
             </motion.div>
-          </div>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <motion.div
+                className="bg-white p-6 rounded-lg shadow-md"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
+                <h3 className="text-xl font-semibold text-purple-800 mb-3">
+                  Output Variables
+                </h3>
+                <p className="text-gray-700 leading-relaxed">
+                  The main output variable is [variable name], which represents
+                  [description].
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="bg-white p-6 rounded-lg shadow-md"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
+              >
+                <h3 className="text-xl font-semibold text-purple-800 mb-3">
+                  Model Architecture
+                </h3>
+                {["Model Type", "Key Features", "Performance Metrics"].map(
+                  (item, index) => (
+                    <motion.div
+                      key={index}
+                      className="mb-4 p-4 bg-purple-50 rounded-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.2 }}
+                    >
+                      <h4 className="font-semibold text-purple-700">{item}</h4>
+                      <p className="text-gray-600">[Description]</p>
+                    </motion.div>
+                  )
+                )}
+              </motion.div>
+
+              <motion.div
+                className="flex justify-center mt-8"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+              >
+                <motion.button
+                  onClick={() =>
+                    handleRedirect("https://bimodelprediction.onrender.com")
+                  }
+                  className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-semibold rounded-xl shadow-lg 
+                            hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <div className="flex items-center space-x-2">
+                    <span>Visit Model</span>
+                    <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </div>
+                  <motion.div
+                    className="absolute inset-0 bg-white opacity-20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </motion.button>
+              </motion.div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    );
+  };
 
   const Page3 = () => (
     <motion.div
